@@ -8,20 +8,21 @@ public class SocialSecNum
 {
     static int[] digits = { 8, 1, 1, 2, 1, 8, 9, 8, 7, 6 };
 
-    SocialSecNum(String number)
+    public SocialSecNum(String number)
     {
         //8112189876
         digits = number.Select(c => c - '0').ToArray();
-        if(digits.Length != 10)
-        {
-            Console.WriteLine ("please provide correct security number and try again");
-            Environment.Exit(0);
-        }
+
         Console.WriteLine ("social security number entered is: {0}\n", number);
         
     }
-    bool IsValid()
+    public bool IsValid()
     {
+        if(digits.Length != 10)
+        {
+            Console.WriteLine ("please provide correct security number and try again");
+            return false;
+        }
         int check_digit = 0;
         for (int i = digits.Length - 2; i >= 0; --i)
             check_digit += ((i & 1) is 0) switch
