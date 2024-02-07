@@ -13,7 +13,7 @@ jobs:
     
     - name: Build the Docker image
       working-directory: .
-      run: docker build . -t docker-hub-username/container-name:latest
+      run: docker build . -t islamabdeen/container-name:latest
 
     - name: Log into Docker Hub
       uses: docker/login-action@v2
@@ -22,4 +22,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push the image to Docker Hub
-      run: docker push docker-hub-username/container-name
+      run: docker push islamabdeen/container-name
